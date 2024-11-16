@@ -3,6 +3,7 @@ package com.product.productserviceapi.controller;
 import com.product.productserviceapi.entity.Products;
 import com.product.productserviceapi.repository.ProductRepository;
 import com.product.productserviceapi.service.ProductService;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +20,9 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
+    @Operation(description = "To fetch the product details by providing the product id")
     @GetMapping("/{id}")
+
     public ResponseEntity<Products> getProductById(@PathVariable Long id) {
         return ResponseEntity.of(productRepository.findById(id));
     }
