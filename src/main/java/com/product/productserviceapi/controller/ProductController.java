@@ -15,16 +15,13 @@ import java.util.List;
 public class ProductController {
 
     @Autowired
-    private ProductRepository productRepository;
-
-    @Autowired
     private ProductService productService;
 
     @Operation(description = "To fetch the product details by providing the product id")
     @GetMapping("/{id}")
 
     public ResponseEntity<Products> getProductById(@PathVariable Long id) {
-        return ResponseEntity.of(productRepository.findById(id));
+        return ResponseEntity.of(productService.getProductById(id));
     }
 
     @PostMapping
